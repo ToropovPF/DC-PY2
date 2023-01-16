@@ -21,6 +21,7 @@ class Book:
                 Пример:
                 #>>> book = Book(id_=25, name="abc", pages=20)  # инициализация экземпляра класса
            """
+
     def __init__(self, id_: int, name: str, pages: int):
         self.id_ = id_
         self.name = name
@@ -35,23 +36,26 @@ class Book:
 
 class Library:
     """
-            Создание и подготовка к работе объекта "библеотка"
+            Создание и подготовка к работе объекта "Библиотека"
             :param books: список книг
             Пример:
-            #>>> library = Library(Book(id_=25, name="abc", pages=20))  # инициализация экземпляра класса
+            #>>> library = Library(Book(id_=25, "id": 2,"name": "test_name_5", "pages": 100)  # инициализация экземпляра класса
         """
+
     def __init__(self, books=None):
         if books is None:
             books = []
         self.books = books
 
     def get_next_book_id(self):
+        """Метод, возвращающий идентификатор для добавления новой книги в библиотеку"""
         if not self.books:
             return 1
         else:
             return self.books[-1].id_ + 1
 
     def get_index_by_book_id(self, id_: int):
+        """Метод, возвращающий индекс книги в списке, который хранится в атрибуте экземпляра класса"""
         for i, books in enumerate(self.books):
             if books.id_ == id_:
                 return i
