@@ -13,10 +13,18 @@ BOOKS_DATABASE = [
 
 
 class Book:
+    """
+                Создание и подготовка к работе объекта "Книга"
+                :param id_: идентификатор книги
+                :param name: название книги
+                :param pages: количество страниц книги
+                Пример:
+                #>>> book = Book(id_=25, name="abc", pages=20)  # инициализация экземпляра класса
+           """
     def __init__(self, id_: int, name: str, pages: int):
-        self.id_ = id_  # идентификатор книги
-        self.name = name  # Название книги
-        self.pages = pages  # Количество страниц в книге
+        self.id_ = id_
+        self.name = name
+        self.pages = pages
 
     def __str__(self) -> str:
         return f'Книга "{self.name}"'
@@ -26,19 +34,27 @@ class Book:
 
 
 class Library:
-    def __init__(self, books=[]):
+    """
+            Создание и подготовка к работе объекта "библеотка"
+            :param books: список книг
+            Пример:
+            #>>> library = Library(Book(id_=25, name="abc", pages=20))  # инициализация экземпляра класса
+        """
+    def __init__(self, books=None):
+        if books is None:
+            books = []
         self.books = books
 
     def get_next_book_id(self):
-        if self.books == []:
+        if not self.books:
             return 1
         else:
-            return len(self.books) + 1
+            return self.books[-1].id_ + 1
 
-    def get_index_by_book_id(self, id_=int):
-        for book_num, book in enumerate(self.books):  # book_num – индекс книги в списке (с 0)
-            if book.id_ == id_:
-                return book_num
+    def get_index_by_book_id(self, id_: int):
+        for i, books in enumerate(self.books):
+            if books.id_ == id_:
+                return i
         raise ValueError("Книги с запрашиваемым id не существует")
 
 
