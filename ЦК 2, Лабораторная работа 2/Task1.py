@@ -13,6 +13,14 @@ BOOKS_DATABASE = [
 
 
 class Book:
+    """
+                  Создание и подготовка к работе объекта "Книга"
+                  :param id_: идентификатор книги
+                  :param name: название книги
+                  :param pages: количество страниц книги
+                  Пример:
+                  #>>> book = Book(id_=10, name="test_name_3", pages=500)  # инициализация экземпляра класса
+             """
     def __init__(self, id_: int, name: str, pages: int):
         self.id_ = id_  # идентификатор книги
         self.name = name  # Название книги
